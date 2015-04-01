@@ -11,7 +11,7 @@
 #include "IntDynArr.h"
 #define SIZE(x) (sizeof(x)/sizeof(int))
 
-/*
+
 void test_IntDynArr()
 {
     IntDynArr a;
@@ -31,6 +31,7 @@ void test_IntDynArr_array()
     IntDynArr a(SIZE(x), x);
     std::cout << a << std::endl;
 }
+/*
 void test_print()
 {
     int x[] = {1, 2, -4, 0};
@@ -63,6 +64,7 @@ void test_plus_eq()
     std::cout << a << ' ';
     std::cout << ((a += b) += b) << std::endl;
 }
+*/
 void test_remove()
 {
     IntDynArr a;
@@ -70,14 +72,13 @@ void test_remove()
     std::cin >> a >> i;
     std::cout << a << ' ' << a.remove(i) << std::endl;
 }
-*/
+
 int main()
 {
     int option;
     std::cin >> option;
     switch (option)
     {
-        /*
         case 1:
             test_IntDynArr();
             break;
@@ -87,16 +88,19 @@ int main()
         case 3:
             test_IntDynArr_array();
             break;
+            /*
         case 7:
             test_eq();
             break;
+            */
         case 17:
             test_remove();
             break;
+            /*
         case 19:
             test_print();          
             break;
-        */
+            */
     }
     
     return 0; 
