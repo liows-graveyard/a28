@@ -11,7 +11,7 @@ public:
     {}
     IntDynArr(int size0);
     IntDynArr(int size0, int a[]);
-    IntDynArr(const IntDynArr &); // NEED
+    IntDynArr(const IntDynArr &);
     ~IntDynArr();
     IntDynArr & operator=(const IntDynArr &);
     int get_size() const { return size; };
@@ -25,11 +25,7 @@ public:
     IntDynArr operator+(const IntDynArr & a) const;
     IntDynArr & insert(int index, int val);
     IntDynArr & remove(int index);
-    // The above function is working but... whenever you print
-    // "std::cout << a << ' ' << a.remove(i) << std::endl;"
-    // you'll notice it is already missing from both. I'm
-    // not sure why this is happening.
-    IntDynArr subarray(int index, int length = -1) const; // NEED
+    IntDynArr subarray(int index, int length) const;
     void print() const;
 private:
     int size;

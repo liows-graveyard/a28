@@ -1,8 +1,8 @@
 /************************************************************************************
  *
  * File : main.cpp
- * Author:
- * Date :
+ * Author: jds95
+ * Date : 4-1-15
  *
  * Description: This is the test program for the IntDynArr class.
  ***********************************************************************************/
@@ -30,6 +30,13 @@ void test_IntDynArr_array()
     int x[] = {1, 2, -4, 0};
     IntDynArr a(SIZE(x), x);
     std::cout << a << std::endl;
+}
+void test_IntDynArr_copy()
+{
+    int x[] = {1, 2, -4, 0};
+    IntDynArr a(SIZE(x), x);
+    IntDynArr c(a);
+    std::cout << c << std::endl;
 }
 void test_equals()
 {
@@ -120,7 +127,19 @@ void test_remove()
     IntDynArr a;
     int i;
     std::cin >> a >> i;
-    std::cout << a << ' ' << a.remove(i) << std::endl;
+    std::cout << a;
+    std::cout << ' '
+              << a.remove(i)
+              << std::endl;
+}
+void test_subarr()
+{
+    IntDynArr x;
+    int index;
+    int length;
+    std::cin >> x >> index >> length;
+    std::cout << x.subarray(index, length) << std::endl;
+    
 }
 void test_member_print()
 {
@@ -133,16 +152,20 @@ int main()
 {
     int option;
     std::cin >> option;
+    
     switch (option)
     {
-        case 1:
+        case 0:
             test_IntDynArr();
             break;
-        case 2:
+        case 1:
             test_IntDynArr_size();
             break;
-        case 3:
+        case 2:
             test_IntDynArr_array();
+            break;
+        case 3:
+            test_IntDynArr_copy();
             break;
         case 5:
             test_size();
@@ -183,10 +206,13 @@ int main()
         case 17:
             test_remove();
             break;
+        case 18:
+            test_subarr();
+            break;
         case 19:
             test_member_print();          
             break;
     }
-    
+   
     return 0; 
 }

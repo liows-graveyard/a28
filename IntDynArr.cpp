@@ -40,12 +40,19 @@ IntDynArr::IntDynArr(int size0, int a[])
         }
     }
 }
-/*
+
 IntDynArr::IntDynArr(const IntDynArr & arr)
 {
+    (*this).size = arr.size;
+    (*this).capacity = arr.capacity;
+    (*this).x = new int [arr.size];
 
+    for (int i = 0; i < arr.size; i++)
+    {
+        (*this).x[i] = arr.x[i];
+    }
 }
-*/
+
 IntDynArr::~IntDynArr()
 {
     delete [] x;
@@ -155,6 +162,34 @@ IntDynArr & IntDynArr::remove(int index)
     (*this).resize(get_size() - 1);
 
     return (*this);
+}
+
+IntDynArr IntDynArr::subarray(int index, int length = -1) const
+{
+    IntDynArr x;
+    x.capacity = capacity;
+    int counter = 0;
+    
+    if (length == -1)
+    {
+        x.size = size - index;
+        for (int i = index; i < size; i++)
+        {
+            x.x[counter] = (*this).x[i];
+            counter++;
+        }
+        return x;
+    }
+    else
+    {
+        x.size = size - (index + length);
+        for (int l = index; l < index + length; l++)
+        {
+            x.x[counter] = (*this).x[l];
+            counter++;
+        }
+        return x;
+    }
 }
 
 void IntDynArr::print() const
