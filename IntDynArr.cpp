@@ -50,22 +50,49 @@ IntDynArr::~IntDynArr()
 {
     delete [] x;
 }
-/*
-IntDynArr & operator=(const IntDynArr &)
-{
 
+IntDynArr & IntDynArr::operator=(const IntDynArr & arr)
+{
+    (*this).resize(arr.size);
+    for (int i = 0; i < arr.size; i++)
+    {
+        (*this).x[i] = arr.x[i];
+    }
+
+    return (*this);
 }
 
-bool operator==(const IntDynArr & arr) const
+bool IntDynArr::operator==(const IntDynArr & arr) const
 {
-
+    if ((*this).size == arr.size)
+    {
+        for (int i = 0; i < arr.size - 1; i++)
+        {
+            if ((*this).x[i] != arr.x[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 
-bool operator!=(const IntDynArr & arr) const
+bool IntDynArr::operator!=(const IntDynArr & arr) const
 {
-
+    if ((*this) == arr)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
-*/
+
 void IntDynArr::resize(const int size0)
 {
     this->size = size0; // update size
@@ -91,17 +118,27 @@ void IntDynArr::resize(const int size0)
         this->capacity = this->size * 2;
     }
 }
-/*
-IntDynArr & operator+=(const IntDynArr & a)
-{
 
+IntDynArr & IntDynArr::operator+=(const IntDynArr & a)
+{
+    int new_size = (*this).size + a.size;
+    int old_size = (*this).size;
+    (*this).resize(new_size);
+    for (int i = old_size; i < new_size; i++)
+    {
+        (*this).x[i] = a.x[i - old_size];
+    }
+    return (*this);
 }
 
-IntDynArr operator+(const IntDynArr & a) const
+IntDynArr IntDynArr::operator+(const IntDynArr & a) const
 {
-
+    IntDynArr t;
+    t = (*this);
+    t += a;
+    return t;
 }
-*/
+
 IntDynArr & IntDynArr::insert(int index, int val)
 {
     (*this).resize(get_size() + 1);
@@ -118,6 +155,20 @@ IntDynArr & IntDynArr::remove(int index)
     (*this).resize(get_size() - 1);
 
     return (*this);
+}
+
+void IntDynArr::print() const
+{
+    std::cout << '{';
+    if ((*this).size > 0)
+    {
+        for (int i = 0; i < (*this).size - 1; ++i)
+        {
+            std::cout << (*this).x[i] << ", ";
+        }
+        std::cout << (*this).x[(*this).size - 1];
+    }
+    std::cout << '}';
 }
 
 std::ostream & operator<<(std::ostream & cout, const IntDynArr & arr)

@@ -13,16 +13,16 @@ public:
     IntDynArr(int size0, int a[]);
     IntDynArr(const IntDynArr &); // NEED
     ~IntDynArr();
-    IntDynArr & operator=(const IntDynArr &); // NEED
+    IntDynArr & operator=(const IntDynArr &);
     int get_size() const { return size; };
     int get_capacity() const { return capacity; };
-    bool operator==(const IntDynArr & arr) const; // NEED
-    bool operator!=(const IntDynArr & arr) const; // NEED
+    bool operator==(const IntDynArr & arr) const;
+    bool operator!=(const IntDynArr & arr) const;
     void resize(const int size0);
     int operator[](int i) const { return x[i]; };
     int & operator[](int i) { return x[i]; };
-    IntDynArr & operator+=(const IntDynArr & a); // NEED
-    IntDynArr operator+(const IntDynArr & a) const; // NEED
+    IntDynArr & operator+=(const IntDynArr & a);
+    IntDynArr operator+(const IntDynArr & a) const;
     IntDynArr & insert(int index, int val);
     IntDynArr & remove(int index);
     // The above function is working but... whenever you print
@@ -30,7 +30,7 @@ public:
     // you'll notice it is already missing from both. I'm
     // not sure why this is happening.
     IntDynArr subarray(int index, int length = -1) const; // NEED
-    void print() const; // NEED
+    void print() const;
 private:
     int size;
     int capacity;
